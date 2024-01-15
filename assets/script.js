@@ -1,55 +1,101 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-
-
-  var options= {
-  num: [1,2,4,5,6,7,8],
-  upper: ["A", "B", "C", "D", "E"],
-  special: ["!", "@", "#", "$"],
-  lower: ["a", "b", "c", "d", "e"]
-  };
 
 
 
 
 
-  var numQ = prompt("Would you like any numbers? Yes or No ");
-if (numQ == options.num[0-7] );
-window.alert("YASSS!"); 
 
-var uppQ = prompt("Did you want any upppercase letters? Type Yes or No");
-if (uppQ      );
+function generatePassword(){
+var length = Number(prompt("Between 8 and 128, how many charecters would you like your password to obtain?"))
 
-var lowerQ = prompt("Did you want any lowercase letters? Type Yes or No")
-if (lowerQ    );
+if(length < 8 || length > 128 ){
+window.alert("Invalid Entry, Please enter numeric value between 8 and 128")
+return}
 
-var specialQ = prompt("Do you care for some special charecters? Type Yes or No")
-if (specialQ   );
+var options= {
+  num: '0123456789',
+  upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  special:'!@#$%^&*',
+  lower: 'abcdefghijklmnopqrstuvwxyz'
+  } ;
 
 
 
-var num = [1,2,4,5,6,7,8]
-var upper = ["A", "B", "C", "D", "E"]
-var special = ["!", "@", "#", "$"]
-var lower = ["a", "b", "c", "d", "e"]
+
+
+//  change questions to selection?
+
+var numQ = confirm("Would you like any numbers? OK=Yes Cancel=No");
+if(!numQ){
+options.num = ""  
+}; 
+ 
+
+var uppQ = confirm("Did you want any upppercase letters? OK=Yes Cancel=No");
+if(!uppQ){
+  options.upper =""
+};
+
+var lowerQ = confirm("Did you want any lowercase letters? OK=Yes Cancel=No");
+if(!lowerQ) {
+  options.lower = ""
+};
+
+
+var specialQ = confirm("Do you care for some special charecters? OK=Yes Cancel=No");
+if(!specialQ) {
+  options.special = ""
+}
+
+var source = ""
+source += options.num 
+source += options.upper
+source += options.special
+source += options.lower
+
+var FinPW = ""
+
+
+
+for (var index = 0; index < length; index++) {
+  FinPW += source.charAt(Math.floor(Math.random()* source.length));
+
 
 
 
   
+}
 
-
-var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+return FinPW;
 
 }
 
+
+
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+}
+
+
+
+//  change questions to selection?
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
+
+
+
+
 
 
 
