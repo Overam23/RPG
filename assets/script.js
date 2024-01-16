@@ -1,13 +1,7 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
-
-
-
-
-
 function generatePassword(){
+
 var length = Number(prompt("Between 8 and 128, how many charecters would you like your password to obtain?"))
 
 if(length < 8 || length > 128 ){
@@ -20,12 +14,6 @@ var options= {
   special:'!@#$%^&*',
   lower: 'abcdefghijklmnopqrstuvwxyz'
   } ;
-
-
-
-
-
-//  change questions to selection?
 
 var numQ = confirm("Would you like any numbers? OK=Yes Cancel=No");
 if(!numQ){
@@ -57,25 +45,14 @@ source += options.lower
 
 var FinPW = ""
 
-
-
 for (var index = 0; index < length; index++) {
-  FinPW += source.charAt(Math.floor(Math.random()* source.length));
-
-
-
-
-  
+  FinPW += source.charAt(Math.floor(Math.random()* source.length));  
 }
 
 return FinPW;
 
 }
 
-
-
-
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -83,11 +60,6 @@ function writePassword() {
     passwordText.value = password;
 }
 
-
-
-//  change questions to selection?
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 
@@ -98,28 +70,6 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// window.prompt ("sometext") , "defai;tText");
-//  var person = prompt("Please enter your name");
-//  console.log(person);
-// var con = confirm("message here?")
-// conole.log(con);
 
 
 
